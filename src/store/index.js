@@ -6,7 +6,19 @@ import mutations from './mutations'
 
 Vue.use(Vuex)
 
+// 各状態を以下で初期化
+const state = {
+  auth: {
+    token: null,
+    userId: null
+  },
+  board: {
+    lists: []
+  }
+}
+
 export default new Vuex.Store({
+  state,
   getters,
   actions,
   mutations,
