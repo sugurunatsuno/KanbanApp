@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import KbnButton from '@components/atoms/KbnButton.vue'
+import KbnButton from '@/components/atoms/KbnButton.vue'
 
 describe('KbnButton', () => {
   describe('プロパティ', () => {
@@ -26,7 +26,7 @@ describe('KbnButton', () => {
             propsData: { type: 'text' }
           })
           expect(button.is('button')).to.equal(true)
-          expect(button.classes()).to.include('kbn-button')
+          expect(button.classes()).to.include('kbn-button-text')
         })
       })
     })
@@ -40,14 +40,16 @@ describe('KbnButton', () => {
       })
 
       describe('true', () => {
-        it('disable属性が付与されていること', () => {
-          const button = mount(KbnButton)
+        it('disabled属性が付与されていること', () => {
+          const button = mount(KbnButton, {
+            propsData: { disabled: true }
+          })
           expect(button.attributes().disabled).to.equal('disabled')
         })
       })
 
       describe('false', () => {
-        it('disable属性が付与されていないこと', () => {
+        it('disabled属性が付与されていないこと', () => {
           const button = mount(KbnButton)
           expect(button.attributes().disabled).to.be.an('undefined')
         })
@@ -83,4 +85,3 @@ describe('KbnButton', () => {
     })
   })
 })
-
